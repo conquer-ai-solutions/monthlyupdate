@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Solutions Team Update — 29 April 2026 — Conquer AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#141414;
+  --bg-card:#1E1E1E;
+  --bg-elev:#242424;
+  --line:rgba(255,255,255,0.08);
+  --line-strong:rgba(255,255,255,0.14);
+  --green:#37A584;
+  --green-soft:rgba(55,165,132,0.18);
+  --green-tint:rgba(55,165,132,0.08);
+  --red:#EC3540;
+  --grey-blue:#6D7287;
+  --orange:#F5A623;
+  --ink:#F5F5F5;
+  --ink-soft:rgba(245,245,245,0.78);
+  --ink-mute:rgba(245,245,245,0.55);
+  --ink-faint:rgba(245,245,245,0.32);
+  --mono:'Geist Mono','SF Mono','JetBrains Mono','IBM Plex Mono',ui-monospace,monospace;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);overflow:hidden;-webkit-font-smoothing:antialiased;font-feature-settings:"ss01","cv01"}
+.deck{position:relative;height:100vh;width:100vw;display:flex;align-items:center;justify-content:center}
+.slide{position:absolute;inset:0;padding:4vh 5vw;display:none;flex-direction:column;justify-content:flex-start;animation:fade .35s ease-out}
+.slide.active{display:flex}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.eyebrow{font-size:.7rem;letter-spacing:.18em;color:var(--green);text-transform:uppercase;font-family:var(--mono);font-weight:500;margin-bottom:1rem}
+h1{font-family:var(--sans);font-weight:600;font-size:3.4rem;line-height:1.05;letter-spacing:-.02em;margin-bottom:1rem;color:var(--ink)}
+h1 em{font-style:normal;color:var(--green);font-weight:600}
+h2{font-family:var(--sans);font-weight:600;font-size:2rem;line-height:1.1;letter-spacing:-.015em;margin-bottom:.4rem}
+h2 em{font-style:normal;color:var(--green);font-weight:600}
+.lede{font-size:.95rem;color:var(--ink-soft);max-width:64ch;line-height:1.55;margin-bottom:1.4rem;font-family:var(--sans);font-weight:400}
+.title-meta{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;color:var(--ink-faint);text-transform:uppercase;font-weight:500}
+.title-meta strong{display:block;color:var(--ink);font-weight:600;font-size:.95rem;letter-spacing:-.005em;text-transform:none;font-family:var(--sans);margin-bottom:.1rem}
+.title-meta .col{text-align:left}
+.title-meta .col.right{text-align:right}
+.divider{width:32px;height:1px;background:var(--green);margin-bottom:1.3rem}
+
+/* TEAM SLIDE */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:.7rem;flex:1;min-height:0}
+.lane{background:var(--bg-card);border:1px solid var(--line);border-radius:6px;padding:.85rem .95rem;display:flex;flex-direction:column;justify-content:flex-start;position:relative;transition:border-color .15s}
+.lane:hover{border-color:var(--line-strong)}
+.lane.tbd{border-style:dashed;border-color:rgba(255,255,255,0.18);background:transparent}
+.lane-role{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:var(--green);text-transform:uppercase;font-weight:500;margin-bottom:.5rem;line-height:1.25}
+.lane.tbd .lane-role{color:var(--ink-mute)}
+.lane-name{font-family:var(--sans);font-size:1.02rem;color:var(--ink);margin-bottom:.4rem;font-weight:600;letter-spacing:-.005em;line-height:1.2}
+.lane-name em{font-style:normal;color:var(--ink-mute);font-weight:500}
+.lane-desc{font-family:var(--sans);font-size:.78rem;line-height:1.45;color:var(--ink-soft);font-weight:400}
+
+/* PROCESS SLIDE */
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:.8rem;flex:1;min-height:0}
+.tile{background:var(--bg-card);border:1px solid var(--line);border-radius:6px;padding:1rem 1.1rem;display:flex;flex-direction:column;position:relative;transition:border-color .15s}
+.tile:hover{border-color:var(--line-strong)}
+.tile-status{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;color:var(--ink-mute);text-transform:uppercase;font-weight:500;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.tile-status.live{color:var(--green)}
+.tile-status.live::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px var(--green-soft)}
+.tile-status.new::before{content:"NEW";font-family:var(--mono);font-size:.55rem;letter-spacing:.16em;background:var(--green);color:var(--bg);padding:.13rem .4rem;border-radius:3px;font-weight:600;margin-right:.2rem}
+.tile-status.new{color:var(--green)}
+.tile-status.trial{color:var(--orange)}
+.tile-status.trial::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 3px rgba(245,166,35,0.18)}
+.tile-title{font-family:var(--sans);font-size:1.05rem;color:var(--ink);margin-bottom:.4rem;font-weight:600;letter-spacing:-.005em;line-height:1.25}
+.tile-desc{font-family:var(--sans);font-size:.82rem;line-height:1.45;color:var(--ink-soft);font-weight:400}
+.tile-kpi{margin-top:auto;padding-top:.5rem;display:flex;align-items:baseline;gap:.6rem;border-top:1px solid var(--line);margin-top:.7rem;padding-top:.55rem}
+.tile-kpi .num{font-family:var(--mono);font-size:1.85rem;color:var(--green);font-weight:500;line-height:1;letter-spacing:-.02em}
+.tile-kpi .lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:var(--ink-mute);text-transform:uppercase;font-weight:500}
+
+/* FUNNEL SLIDE */
+.funnel{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;flex:1;min-height:0;align-items:stretch}
+.bucket{background:var(--bg-card);border:1px solid var(--line);border-radius:8px;padding:1rem 1.1rem;display:flex;flex-direction:column;position:relative;transition:border-color .15s}
+.bucket:hover{border-color:var(--line-strong)}
+.bucket.engaged{border-color:rgba(55,165,132,0.28);background:linear-gradient(180deg,var(--green-tint) 0%,var(--bg-card) 60%)}
+.bucket-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.3rem}
+.bucket-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--ink-mute);text-transform:uppercase;font-weight:500}
+.bucket.engaged .bucket-label{color:var(--green)}
+.bucket-count{font-family:var(--mono);font-size:1.4rem;color:var(--ink);font-weight:500;letter-spacing:-.02em}
+.bucket-count em{color:var(--green);font-style:normal;font-weight:600}
+.bucket-tagline{font-family:var(--sans);font-size:.78rem;color:var(--ink-mute);margin-bottom:.7rem;line-height:1.4;font-weight:400}
+.bucket-divider{height:1px;background:var(--line);margin-bottom:.7rem}
+.companies{display:flex;flex-direction:column;gap:.4rem;font-family:var(--sans)}
+.companies li{list-style:none;color:var(--ink);font-size:.88rem;padding-left:.9rem;position:relative;line-height:1.3;font-weight:500}
+.companies li::before{content:"";position:absolute;left:0;top:.5rem;width:5px;height:5px;background:var(--green);border-radius:1px}
+.bucket.intro .companies li::before{background:var(--ink-mute)}
+.flow-cap{font-family:var(--sans);font-size:.78rem;color:var(--ink-mute);margin-top:.9rem;padding-top:.7rem;border-top:1px solid var(--line);text-align:center;font-weight:400}
+.flow-cap strong{color:var(--green);font-weight:600}
+
+/* LIFECYCLE SLIDE */
+.lifecycle{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;flex:1;min-height:0}
+.col-card{background:var(--bg-card);border:1px solid var(--line);border-radius:8px;padding:1rem 1.1rem;display:flex;flex-direction:column;position:relative;transition:border-color .15s}
+.col-card:hover{border-color:var(--line-strong)}
+.col-card.midbar{border-color:rgba(55,165,132,0.28);background:linear-gradient(180deg,var(--green-tint) 0%,var(--bg-card) 60%)}
+.col-head{margin-bottom:.5rem}
+.col-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--ink-mute);text-transform:uppercase;font-weight:500;margin-bottom:.2rem;display:block}
+.col-card.midbar .col-label{color:var(--green)}
+.col-sub{font-family:var(--sans);font-size:.78rem;color:var(--ink-mute);line-height:1.35;font-weight:400}
+.col-divider{height:1px;background:var(--line);margin:.4rem 0 .7rem}
+.col-list{display:flex;flex-direction:column;gap:.55rem;font-family:var(--sans)}
+.col-item{padding-left:.9rem;position:relative;line-height:1.25}
+.col-item::before{content:"";position:absolute;left:0;top:.5rem;width:5px;height:5px;background:var(--green);border-radius:1px}
+.col-card:not(.midbar):not(.queuebar) .col-item::before{background:var(--ink-mute)}
+.col-card.queuebar .col-item::before{background:var(--orange)}
+.col-item .acc{font-size:.9rem;color:var(--ink);display:block;font-weight:600;letter-spacing:-.005em}
+.col-item .ctx{font-family:var(--mono);font-size:.7rem;color:var(--ink-mute);display:block;margin-top:.1rem;font-weight:400;letter-spacing:.005em}
+.lifecycle-foot{font-family:var(--sans);font-size:.78rem;color:var(--ink-mute);margin-top:.85rem;padding-top:.7rem;border-top:1px solid var(--line);text-align:center;font-weight:400}
+.lifecycle-foot strong{color:var(--green);font-weight:600}
+
+/* PATTERN SLIDE */
+.pattern-frame{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;max-width:60ch}
+.pattern-q{font-family:var(--sans);font-size:2.7rem;line-height:1.2;color:var(--ink);font-weight:600;letter-spacing:-.02em;margin-bottom:1.6rem}
+.pattern-q em{font-style:normal;color:var(--green);font-weight:600}
+.pattern-sub{font-family:var(--sans);font-size:1.05rem;color:var(--ink-soft);line-height:1.6;font-weight:400}
+
+/* NAV */
+.nav{position:fixed;bottom:1.5rem;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:1.5rem;z-index:10}
+.dots{display:flex;gap:.5rem}
+.slide-dot{width:6px;height:6px;border-radius:50%;background:rgba(245,245,245,0.18);border:none;cursor:pointer;transition:background .2s,transform .2s}
+.slide-dot:hover{background:rgba(245,245,245,0.4)}
+.slide-dot.active{background:var(--green);transform:scale(1.3)}
+.counter{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;color:var(--ink-faint);text-transform:uppercase;font-weight:500}
+.click-area{position:fixed;top:0;bottom:0;width:25%;cursor:pointer;z-index:5}
+#leftClickArea{left:0}
+#rightClickArea{right:0}
+
+.brand-mark{position:fixed;top:1.6rem;right:2rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;color:var(--green);text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:.4rem}
+.brand-mark::before{content:"";width:6px;height:6px;background:var(--green);border-radius:50%;box-shadow:0 0 0 3px var(--green-soft)}
+</style>
+</head>
+<body>
+<div class="brand-mark">Conquer AI · Solutions</div>
+<div id="leftClickArea" class="click-area"></div>
+<div id="rightClickArea" class="click-area"></div>
+
+<div class="deck">
+
+<!-- ───────── SLIDE 1 — TITLE ───────── -->
+<section class="slide active">
+  <div class="eyebrow">Monthly Advisor Update</div>
+  <h1>Solutions Team Update<br><em>April 2026</em></h1>
+  <div class="divider"></div>
+  <p class="lede">Where the team is, what the process looks like now, and how the funnel is moving.</p>
+  <div class="title-meta">
+    <div class="col">Prepared by<strong>Bolaji Olatoye</strong>Head of AI Solutions</div>
+    <div class="col right"><strong>29 April 2026</strong>Conquer AI</div>
+  </div>
+</section>
+
+<!-- ───────── SLIDE 2 — TEAM ───────── -->
+<section class="slide">
+  <div class="eyebrow">Team Organisation</div>
+  <h2>Scaling <em>the machine</em></h2>
+  <div class="divider"></div>
+  <p class="lede">Named lanes for every part of the function. Senior engineering capability joined this month. Another technical hire on the way.</p>
+  <div class="team-grid">
+    <div class="lane">
+      <div class="lane-role">CTO · Air Cover</div>
+      <div class="lane-name">Tom</div>
+      <div class="lane-desc">Technical credibility in the room. Architectural oversight when clients need confidence.</div>
+    </div>
+    <div class="lane">
+      <div class="lane-role">Commercial Navigation</div>
+      <div class="lane-name">Bolaji &amp; Luke</div>
+      <div class="lane-desc">Deal progression from introduction through to close.</div>
+    </div>
+    <div class="lane">
+      <div class="lane-role">Senior Engineer · Proposal Authority</div>
+      <div class="lane-name">David Williams</div>
+      <div class="lane-desc">Technical sign-off on every proposal. Alignment docs, architecture diligence, red-team review.</div>
+    </div>
+    <div class="lane">
+      <div class="lane-role">POC Stack &amp; Optimisation</div>
+      <div class="lane-name">Junior</div>
+      <div class="lane-desc">Building, optimising and running proofs of concept.</div>
+    </div>
+    <div class="lane">
+      <div class="lane-role">Brazil Focus &amp; Sales Ops</div>
+      <div class="lane-name">Bernardo</div>
+      <div class="lane-desc">Brazil and LATAM market focus. Sales operations support.</div>
+    </div>
+    <div class="lane">
+      <div class="lane-role">Whiteboard Automation</div>
+      <div class="lane-name">Session Runner</div>
+      <div class="lane-desc">Automated whiteboard creation. Discovery into structured outputs at speed.</div>
+    </div>
+    <div class="lane">
+      <div class="lane-role">Solutions Mailbox</div>
+      <div class="lane-name">solutions@conquer.ai</div>
+      <div class="lane-desc">Centralised inbox. Client communications, introductions, follow-ups. One front door.</div>
+    </div>
+    <div class="lane tbd">
+      <div class="lane-role">Engineering · Joining Soon</div>
+      <div class="lane-name"><em>TBD</em></div>
+      <div class="lane-desc">Additional engineering capacity joining as the proposal pipeline grows.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── SLIDE 3 — PROCESS ───────── -->
+<section class="slide">
+  <div class="eyebrow">Process Optimisation</div>
+  <h2>Predictability is <em>built monthly</em></h2>
+  <div class="divider"></div>
+  <p class="lede">This month: a throughput KPI and a proposal review process with technical authority. Existing platforms continue to bed in.</p>
+  <div class="process-grid">
+    <div class="tile">
+      <div class="tile-status new">Throughput KPI</div>
+      <div class="tile-title">5 proposals per week</div>
+      <div class="tile-desc">20 proposals per month. The measure we now track to.</div>
+      <div class="tile-kpi"><div class="num">20</div><div class="lbl">/ month target</div></div>
+    </div>
+    <div class="tile">
+      <div class="tile-status new">Proposal Review Process</div>
+      <div class="tile-title">Technical authority before send</div>
+      <div class="tile-desc">Every proposal goes through senior-engineer review with David Williams, then a CTO-led review call. Claims red-teamed against primary sources before send.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-status live">Conquer Intel · Live</div>
+      <div class="tile-title">Single source of truth</div>
+      <div class="tile-desc">Every client interaction in one system. Meetings, actions, contacts, context. Used daily across the team.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-status live">Cowork + Claude Skills · Live</div>
+      <div class="tile-title">Custom skills for delivery</div>
+      <div class="tile-desc">Branded proposals, effort estimates, alignment documents, POC walkthroughs.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-status trial">Client Engagement Pack · Piloting</div>
+      <div class="tile-title">Standardised client portal</div>
+      <div class="tile-desc">Alignment doc, POC access, timeline, contacts. Piloting with selected accounts.</div>
+    </div>
+    <div class="tile">
+      <div class="tile-status live">Pipeline Dashboard · Live</div>
+      <div class="tile-title">Real-time pipeline view</div>
+      <div class="tile-desc">Every account by stage, region, commercial territory. Advisor and process views available.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── SLIDE 4 — THE FUNNEL ───────── -->
+<section class="slide">
+  <div class="eyebrow">Commercial Pipeline</div>
+  <h2>The funnel</h2>
+  <div class="divider"></div>
+  <p class="lede">Three buckets across the commercial process. Discovery, accounts engaged with momentum, contracts signed or in flight.</p>
+  <div class="funnel">
+    <div class="bucket intro">
+      <div class="bucket-header">
+        <div class="bucket-label">Discovery</div>
+        <div class="bucket-count">~<em>40</em></div>
+      </div>
+      <div class="bucket-tagline">First conversations. Qualifying signal still building.</div>
+      <div class="bucket-divider"></div>
+      <ul class="companies">
+        <li>Wayfair</li>
+        <li>Bain &amp; Company</li>
+        <li>Crayola</li>
+        <li>Optima Health</li>
+        <li>Ketjen</li>
+      </ul>
+    </div>
+    <div class="bucket engaged">
+      <div class="bucket-header">
+        <div class="bucket-label">Engaged · Momentum</div>
+        <div class="bucket-count"><em>10</em></div>
+      </div>
+      <div class="bucket-tagline">Whiteboards held, POCs in flight, proposals on the table.</div>
+      <div class="bucket-divider"></div>
+      <ul class="companies">
+        <li>Lumanity</li>
+        <li>USSC</li>
+        <li>Farmer J</li>
+        <li>Viking Group</li>
+        <li>Bank of Hawaii</li>
+        <li>Sensata</li>
+        <li>Lingotto</li>
+        <li>Agendia NV</li>
+        <li>Baxter</li>
+        <li>Logan Air</li>
+      </ul>
+    </div>
+    <div class="bucket contract">
+      <div class="bucket-header">
+        <div class="bucket-label">Contract · Closing</div>
+        <div class="bucket-count"><em>5</em></div>
+      </div>
+      <div class="bucket-tagline">Signed and in delivery, or contract out for signature.</div>
+      <div class="bucket-divider"></div>
+      <ul class="companies">
+        <li>SAI MedPartners</li>
+        <li>East West Bank</li>
+        <li>News UK</li>
+        <li>Press Box PR</li>
+        <li>NFP</li>
+      </ul>
+    </div>
+  </div>
+  <div class="flow-cap"><strong>Five closes</strong> in the most recent quarter.</div>
+</section>
+
+<!-- ───────── SLIDE 5 — ENGAGED MOMENTUM ───────── -->
+<section class="slide">
+  <div class="eyebrow">The Live Proposal Book</div>
+  <h2>Proposals <em>in flight</em></h2>
+  <div class="divider"></div>
+  <p class="lede">Where every proposal sits right now. With the client awaiting, in technical review today, or in the alignment-doc queue before going out.</p>
+  <div class="lifecycle">
+    <div class="col-card">
+      <div class="col-head">
+        <span class="col-label">With Client</span>
+        <div class="col-sub">Sent. Awaiting response.</div>
+      </div>
+      <div class="col-divider"></div>
+      <div class="col-list">
+        <div class="col-item"><span class="acc">Itaú BBA</span><span class="ctx">Pitchbook proposal</span></div>
+        <div class="col-item"><span class="acc">Yorkshire Building Society</span><span class="ctx">Charlie Change · Phase 1</span></div>
+        <div class="col-item"><span class="acc">Lingotto</span><span class="ctx">Phase 1 with CEO · IR track opened</span></div>
+        <div class="col-item"><span class="acc">Royal Free</span><span class="ctx">At client mini tender</span></div>
+        <div class="col-item"><span class="acc">Paycor</span><span class="ctx">Vendor questionnaire in flight</span></div>
+      </div>
+    </div>
+    <div class="col-card midbar">
+      <div class="col-head">
+        <span class="col-label">Currently In Review</span>
+        <div class="col-sub">v8 in proposal review. Sending this week.</div>
+      </div>
+      <div class="col-divider"></div>
+      <div class="col-list">
+        <div class="col-item"><span class="acc">Lumanity</span><span class="ctx">Knowledge FRaiME</span></div>
+        <div class="col-item"><span class="acc">USSC</span><span class="ctx">Supply Chain Intelligence</span></div>
+        <div class="col-item"><span class="acc">Farmer J</span><span class="ctx">Sales Forecasting Intelligence</span></div>
+        <div class="col-item"><span class="acc">Viking</span><span class="ctx">Site Intelligence Platform</span></div>
+        <div class="col-item"><span class="acc">Woodward</span><span class="ctx">Internal memo</span></div>
+      </div>
+    </div>
+    <div class="col-card queuebar">
+      <div class="col-head">
+        <span class="col-label">To Review Next</span>
+        <div class="col-sub">Alignment doc to proposal. Next out.</div>
+      </div>
+      <div class="col-divider"></div>
+      <div class="col-list">
+        <div class="col-item"><span class="acc">Baxter</span><span class="ctx">In technical review queue</span></div>
+        <div class="col-item"><span class="acc">Ketjen</span><span class="ctx">Briefed · alignment doc</span></div>
+        <div class="col-item"><span class="acc">Weatherford</span><span class="ctx">Briefed · client data shared</span></div>
+        <div class="col-item"><span class="acc">Bank of Hawaii</span><span class="ctx">Architecture note + Phase 1</span></div>
+        <div class="col-item"><span class="acc">Novant Health</span><span class="ctx">Technical handover</span></div>
+        <div class="col-item"><span class="acc">Sensata</span><span class="ctx">Requirements Mgmt + Airdrop</span></div>
+        <div class="col-item"><span class="acc">Crayola</span><span class="ctx">POC by Junior · David presents</span></div>
+        <div class="col-item"><span class="acc">Peoples Group</span><span class="ctx">Tagged in · Tom sense-check</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="lifecycle-foot">Plus <strong>Logan Air</strong> on-site Thursday · <strong>Agendia</strong> proposal in two weeks · <strong>Ares</strong> POC refinement · <strong>S&amp;C</strong> POC build.</div>
+</section>
+
+<!-- ───────── SLIDE 6 — PATTERN ───────── -->
+<section class="slide">
+  <div class="eyebrow">The Pattern</div>
+  <div class="pattern-frame">
+    <div class="pattern-q">The funnel <em>is converting</em>.<br>The process <em>is the predictability</em>.<br>Every month <em>adds a layer</em>.</div>
+    <div class="divider"></div>
+    <p class="pattern-sub">Five closes behind us. Ten engaged accounts. Twenty proposals a month as the cadence.</p>
+    <div class="title-meta" style="margin-top:3rem">
+      <div class="col"><strong>Questions?</strong>Open floor.</div>
+      <div class="col right"><strong>Bolaji Olatoye</strong>Head of AI Solutions · Conquer AI</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="nav">
+  <div class="dots">
+    <button class="slide-dot active" data-slide="0" aria-label="Slide 1"></button>
+    <button class="slide-dot" data-slide="1" aria-label="Slide 2"></button>
+    <button class="slide-dot" data-slide="2" aria-label="Slide 3"></button>
+    <button class="slide-dot" data-slide="3" aria-label="Slide 4"></button>
+    <button class="slide-dot" data-slide="4" aria-label="Slide 5"></button>
+    <button class="slide-dot" data-slide="5" aria-label="Slide 6"></button>
+  </div>
+  <div class="counter" id="slideCounter">1 / 6</div>
+</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.slide-dot');
+const counter = document.getElementById('slideCounter');
+const totalSlides = slides.length;
+let currentSlide = 0;
+
+function showSlide(n) {
+  if (n >= totalSlides) currentSlide = 0;
+  if (n < 0) currentSlide = totalSlides - 1;
+  slides.forEach(s => s.classList.remove('active'));
+  dots.forEach(d => d.classList.remove('active'));
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+  counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+}
+function nextSlide(){ currentSlide++; if (currentSlide >= totalSlides) currentSlide = 0; showSlide(currentSlide); }
+function prevSlide(){ currentSlide--; if (currentSlide < 0) currentSlide = totalSlides - 1; showSlide(currentSlide); }
+function goToSlide(n){ currentSlide = n; if (currentSlide >= totalSlides) currentSlide = totalSlides - 1; if (currentSlide < 0) currentSlide = 0; showSlide(currentSlide); }
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+});
+document.getElementById('leftClickArea').addEventListener('click', prevSlide);
+document.getElementById('rightClickArea').addEventListener('click', nextSlide);
+dots.forEach((dot, index) => { dot.addEventListener('click', () => goToSlide(index)); });
+
+showSlide(currentSlide);
+</script>
+</body>
+</html>
