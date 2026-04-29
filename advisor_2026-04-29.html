@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,6 +91,7 @@ h2 em{font-style:normal;color:var(--green);font-weight:600}
 .bucket.intro .companies li::before{background:var(--ink-mute)}
 .flow-cap{font-family:var(--sans);font-size:.78rem;color:var(--ink-mute);margin-top:.9rem;padding-top:.7rem;border-top:1px solid var(--line);text-align:center;font-weight:400}
 .flow-cap strong{color:var(--green);font-weight:600}
+.bucket-foot{font-family:var(--sans);font-size:.7rem;color:var(--ink-mute);margin-top:auto;padding-top:.65rem;border-top:1px dashed rgba(255,255,255,0.07);line-height:1.45;font-weight:400;font-style:italic}
 
 /* LIFECYCLE SLIDE */
 .lifecycle{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;flex:1;min-height:0}
@@ -247,14 +249,14 @@ h2 em{font-style:normal;color:var(--green);font-weight:600}
   <div class="eyebrow">Commercial Pipeline</div>
   <h2>The funnel</h2>
   <div class="divider"></div>
-  <p class="lede">Three buckets across the commercial process. Discovery, accounts engaged with momentum, contracts signed or in flight.</p>
+  <p class="lede">Three buckets across the commercial process. What each bucket means, and the named accounts in each.</p>
   <div class="funnel">
     <div class="bucket intro">
       <div class="bucket-header">
         <div class="bucket-label">Discovery</div>
         <div class="bucket-count">~<em>40</em></div>
       </div>
-      <div class="bucket-tagline">First conversations. Qualifying signal still building.</div>
+      <div class="bucket-tagline">Early-stage. Accounts that have come into the orbit. Opening dialogue, sizing up the fit.</div>
       <div class="bucket-divider"></div>
       <ul class="companies">
         <li>Wayfair</li>
@@ -262,14 +264,18 @@ h2 em{font-style:normal;color:var(--green);font-weight:600}
         <li>Crayola</li>
         <li>Optima Health</li>
         <li>Ketjen</li>
+        <li>Mango Sciences</li>
+        <li>Serone</li>
+        <li>Grizzly MEP</li>
       </ul>
+      <div class="bucket-foot">David Carter holds the wider top-of-funnel view; this is the cut tracked from the Solutions side.</div>
     </div>
     <div class="bucket engaged">
       <div class="bucket-header">
-        <div class="bucket-label">Engaged · Momentum</div>
-        <div class="bucket-count"><em>10</em></div>
+        <div class="bucket-label">Engaged</div>
+        <div class="bucket-count"><em>14</em></div>
       </div>
-      <div class="bucket-tagline">Whiteboards held, POCs in flight, proposals on the table.</div>
+      <div class="bucket-tagline">Active. Movement and positive signals. Working sessions, POCs and proposals in flight.</div>
       <div class="bucket-divider"></div>
       <ul class="companies">
         <li>Lumanity</li>
@@ -282,11 +288,15 @@ h2 em{font-style:normal;color:var(--green);font-weight:600}
         <li>Agendia NV</li>
         <li>Baxter</li>
         <li>Logan Air</li>
+        <li>Aries</li>
+        <li>Pacific Life</li>
+        <li>Novant Health</li>
+        <li>S&amp;C</li>
       </ul>
     </div>
     <div class="bucket contract">
       <div class="bucket-header">
-        <div class="bucket-label">Contract · Closing</div>
+        <div class="bucket-label">Closed</div>
         <div class="bucket-count"><em>5</em></div>
       </div>
       <div class="bucket-tagline">Signed and in delivery, or contract out for signature.</div>
@@ -359,20 +369,6 @@ h2 em{font-style:normal;color:var(--green);font-weight:600}
   <div class="lifecycle-foot">Plus <strong>Logan Air</strong> on-site Thursday · <strong>Agendia</strong> proposal in two weeks · <strong>Ares</strong> POC refinement · <strong>S&amp;C</strong> POC build.</div>
 </section>
 
-<!-- ───────── SLIDE 6 — PATTERN ───────── -->
-<section class="slide">
-  <div class="eyebrow">The Pattern</div>
-  <div class="pattern-frame">
-    <div class="pattern-q">The funnel <em>is converting</em>.<br>The process <em>is the predictability</em>.<br>Every month <em>adds a layer</em>.</div>
-    <div class="divider"></div>
-    <p class="pattern-sub">Five closes behind us. Ten engaged accounts. Twenty proposals a month as the cadence.</p>
-    <div class="title-meta" style="margin-top:3rem">
-      <div class="col"><strong>Questions?</strong>Open floor.</div>
-      <div class="col right"><strong>Bolaji Olatoye</strong>Head of AI Solutions · Conquer AI</div>
-    </div>
-  </div>
-</section>
-
 </div>
 
 <div class="nav">
@@ -382,9 +378,8 @@ h2 em{font-style:normal;color:var(--green);font-weight:600}
     <button class="slide-dot" data-slide="2" aria-label="Slide 3"></button>
     <button class="slide-dot" data-slide="3" aria-label="Slide 4"></button>
     <button class="slide-dot" data-slide="4" aria-label="Slide 5"></button>
-    <button class="slide-dot" data-slide="5" aria-label="Slide 6"></button>
   </div>
-  <div class="counter" id="slideCounter">1 / 6</div>
+  <div class="counter" id="slideCounter">1 / 5</div>
 </div>
 
 <script>
